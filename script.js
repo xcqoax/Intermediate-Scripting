@@ -240,3 +240,142 @@ function fearNotLetter(str) {
   }
   
   uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
+
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/**
+ * Suma  de numero impares serie figonacci (Sum All Odd Fibonacci Numbers)
+ * 
+ * Se la suma de los numero sfigonacci que sean impares, sumara los impares que sean menores al num de entrada. 
+ * El primer punto es obtener los numeros figonacci, mediante un ciclo For se suma un numero(anterior) junto con otro 
+ * numero(actual) y se asignan a una variable, el numero anterior tomara el valor del numero actual y el numero actual tomara
+ * el valor de la suma, se valida si el numero sumado es par o impar., si es impar se suma en otra varuiable que almacenara
+ * solamente los impares
+ * 
+ * 
+ * @param {number}
+ * @returns {number}
+ * 
+ * 
+ */
+
+
+  function sumFibs(num) {
+    let numeroActual=0,
+        numeroAnterior=1,
+        sumaTotal=0,
+        numeroFigonacci=0;
+  
+    for(let i = 0; i < num ; i ++){
+              sumaTotal = numeroAnterior + numeroActual;
+              numeroAnterior = numeroActual;
+              numeroActual = sumaTotal;
+  
+          if(sumaTotal % 2 > 0 && sumaTotal <= num){
+               numeroFigonacci += sumaTotal;
+  
+             }
+  
+          }      
+    return numeroFigonacci
+  }
+  
+  sumFibs(4);
+
+  //////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * Sum All primes
+ * 
+ * Sumar los numero primos que sean menores o iguales al argumento.
+ * 
+ * 
+ */
+function sumPrimes(num) {
+  let sumaPrimo = 0,
+    j = 2; // se inicio desde 2 dado que el 1 digamos es un numero ya considerado como primo.
+
+while( j <= num){
+    if(primo(j)){
+       sumaPrimo += j; 
+    }
+    j++;
+  }
+  return sumaPrimo
+}
+sumPrimes(10);
+
+function primo(numero){
+  let contadorDiv=0;
+    for(let i = 1; i <= numero; i++){
+        if(numero % i == 0){
+          contadorDiv += 1;
+        }
+      }
+
+  if(contadorDiv <= 2){
+      return numero 
+      } 
+  }
+/**
+ * Smallest Common Multiple
+ * 
+ * Encontrar el MCM de un rango determinado por un array, tomando en consideración que solo nos entregan los extremos del array.
+ * buscar el MCM por medio de la muiltiplicación de los numero mayores del arreglo, al multiplicarlos se recorre al arreglo para
+ * si es divisible por el sig item, en caso de que no algun item no cumpla la condición el contadora de las vuelta se incrementa
+ * asi hasta encontrar un numero que sea divisible entre todos los elementos del array. 
+ * 
+ */
+function smallestCommons(arr) {
+  let valMin = Math.min(arr[0],arr[1]),
+      valMax = Math.max(arr[0],arr[1]),
+      newArray = [],
+      vuelta = 1,
+      n,
+      mcm=0;
+
+ arrayCompleto(valMax,valMin)
+
+function arrayCompleto(val2, val1){
+
+  for(let i = val2; i >= val1; i--){
+   newArray.push(i);
+    }
+  }
+
+  do {
+    mcm = newArray[0] * vuelta * newArray[1];
+    for (n = 2; n < newArray.length; n++) {
+      if (mcm % newArray[n] !== 0) {
+        break;
+      }
+    }
+
+    vuelta++;
+  } while (n !== newArray.length);
+  return mcm;
+}
+
+smallestCommons([1,5]);
+
+/**
+ * Drop iy
+ * 
+ * Dado un arreglo y una funció para parametros, se debe recorrer el arr hasta que el el valor retornado por la función (parametro)
+ * sea verdadero, posterior a ello los elementos no cumplan la condición de la función deberanm ser eliminados de la función 
+ * 
+ */
+
+function dropElements(arr, func) {
+
+  let tamano = arr.length;
+  for(let i=0; i < tamano; i++){
+    if(func(arr[0])){
+      break
+    } else{
+      arr.shift()
+    }
+  }
+    return arr
+  }
+  
+  dropElements([1,2,3,9,2], function(n) {return n > 2; });
